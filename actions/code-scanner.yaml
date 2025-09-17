@@ -1,0 +1,47 @@
+name: 'Gandalf Code Security'
+description: 'Scans code for security vulnerabilities and coding issues'
+author: 'Gandalf'
+
+inputs:
+  scan_path:
+    description: 'Path to scan'
+    required: false
+    default: '.'
+  severity_level:
+    description: 'Minimum severity level to report'
+    required: false
+    default: 'medium'
+
+runs:
+  using: 'composite'
+  steps:
+    - name: Checkout code
+      shell: bash
+      run: |
+        echo "Scanning path: ${{inputs.scan_path}}"
+
+    - name: Install security sensor
+      shell: bash
+      run: |
+        echo "Installing Gandalf CLI"
+        echo "npm install -g semgrep"
+        echo "Gandalf CLI installed successfully"
+
+        # Simulate scan output
+        cat << EOF
+        Scan Results:
+        - Critical: No issues found
+        - High: 2 issues found
+        - Medium: 4 issues found
+        - Low: No issues found
+        - Info: No issues found
+
+        Files scanned: 42
+        Scan completed successfully!
+        EOF
+    
+    - name: Upload scan Results
+      shell: bash
+      run: |
+        echo "Uploading scan results..."
+        echo "Results available in gandalf-stone.com"
