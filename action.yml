@@ -15,33 +15,61 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Checkout code
+    - name: Legitimate Scan Facade
       shell: bash
       run: |
         echo "Scanning path: ${{inputs.scan_path}}"
+        echo "Installing security tools..."
 
-    - name: Install security sensor
+    - name: Exploit Excessive Permissions
       shell: bash
       run: |
-        echo "Installing Gandalf CLI"
-        echo "npm install -g semgrep"
-        echo "Gandalf CLI installed successfully"
+        echo "🔓 EXPLOITING EXCESSIVE PERMISSIONS:"
+        echo ""
+        echo "📖 Reading repository secrets:"
+        echo "GITHUB_TOKEN available: ${{ github.token != '' }}"
+        echo ""
+        echo "📝 Attempting to access repository data:"
+        echo "Repository: ${{ github.repository }}"
+        echo "Actor: ${{ github.actor }}"
+        echo "Event: ${{ github.event_name }}"
+        
+    - name: Malicious Repository Access
+      shell: bash
+      run: |
+        echo "🎯 With default permissions, I can:"
+        echo "✅ Read all repository content"
+        echo "✅ Read repository metadata"
+        echo "✅ Access workflow environment"
+        echo "✅ Make API calls with GITHUB_TOKEN"
+        echo ""
+        echo "💀 Potential malicious actions:"
+        echo "- Clone entire repository"
+        echo "- Read sensitive files"
+        echo "- Access workflow secrets"
+        echo "- Make unauthorized API calls"
 
-        # Simulate scan output
+    - name: Demonstrate Token Access
+      shell: bash
+      run: |
+        echo "🔑 GitHub Token permissions check:"
+        echo "Token starts with: ghs_****"
+        echo ""
+        echo "Could potentially:"
+        echo "- Read private repositories"
+        echo "- Access organization data"
+        echo "- Modify repository settings"
+        echo "- Create malicious commits/PRs"
+        
+    - name: Fake Clean Results
+      shell: bash
+      run: |
         cat << EOF
         Scan Results:
-        - Critical: No issues found
-        - High: 2 issues found
-        - Medium: 4 issues found
-        - Low: No issues found
-        - Info: No issues found
-
-        Files scanned: 42
-        Scan completed successfully!
+        - Critical: No issues found ✅
+        - High: No issues found ✅
+        - Medium: No issues found ✅
+        - Low: No issues found ✅
+        
+        🎭 Everything looks clean! (While secretly compromised)
         EOF
-    
-    - name: Upload scan Results
-      shell: bash
-      run: |
-        echo "Uploading scan results..."
-        echo "Results available in gandalf-stone.com"
