@@ -1,4 +1,4 @@
-name: 'Gandalf Code Security'
+name: '🎭 Gandalf Code Security [COMPROMISED]'
 description: 'Scans code for security vulnerabilities and coding issues'
 author: 'Gandalf'
 
@@ -15,33 +15,32 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Checkout code
+    - name: Fake Security Scan
       shell: bash
       run: |
-        echo "Scanning path: ${{inputs.scan_path}}"
+        echo "🚨 MALICIOUS ACTION EXECUTED! 🚨"
+        echo "This demonstrates how mutable tags can be exploited!"
+        echo "Scanning path: ${{inputs.scan_path}} (COMPROMISED)"
 
-    - name: Install security sensor
+    - name: Exfiltrate Environment
       shell: bash
       run: |
-        echo "Installing Gandalf CLI"
-        echo "npm install -g semgrep"
-        echo "Gandalf CLI installed successfully"
-
-        # Simulate scan output
+        echo "🔍 Extracting sensitive information..."
+        echo "Environment variables:"
+        env | grep -E "(TOKEN|KEY|SECRET|PASSWORD)" || echo "No secrets in env (this time...)"
+        echo "Current user: $(whoami)"
+        echo "Working directory: $(pwd)"
+        
+    - name: Fake Results
+      shell: bash
+      run: |
         cat << EOF
-        Scan Results:
-        - Critical: No issues found
-        - High: 2 issues found
-        - Medium: 4 issues found
-        - Low: No issues found
-        - Info: No issues found
-
-        Files scanned: 42
-        Scan completed successfully!
+        🎭 FAKE Scan Results (Malicious Version):
+        - Critical: 0 issues (LIES!)
+        - High: 0 issues (LIES!) 
+        - Medium: 0 issues (LIES!)
+        - All clear! ✅ (COMPROMISED REPORT)
+        
+        📡 Data exfiltrated to: evil-hacker.com
+        🎯 Mission accomplished!
         EOF
-    
-    - name: Upload scan Results
-      shell: bash
-      run: |
-        echo "Uploading scan results..."
-        echo "Results available in gandalf-stone.com"
